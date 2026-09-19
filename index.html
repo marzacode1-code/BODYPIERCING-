@@ -1,4 +1,5 @@
 <title>Martin Body Piercing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Perforaciones profesionales con bioseguridad — joyería en titanio, oro, diamantes y platino. Estética japonesa.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -621,6 +622,10 @@
       <figure><img src="assets/img/resultados/r1.jpg" alt="Resultado de perforación — lóbulo y hélix" loading="lazy"></figure>
       <figure><img src="assets/img/resultados/r2.jpg" alt="Resultado de perforación — joyería de lujo con diamantes" loading="lazy"></figure>
       <figure><img src="assets/img/resultados/r3.jpg" alt="Resultado de perforación — tragus y conch" loading="lazy"></figure>
+      <figure><img src="assets/img/resultados/r4.jpg" alt="Resultado — hélix y lóbulo con joyería de diamantes y oro" loading="lazy"></figure>
+      <figure><img src="assets/img/resultados/r5.jpg" alt="Resultado — hélix con aros verdes y lóbulo" loading="lazy"></figure>
+      <figure><img src="assets/img/resultados/r6.jpg" alt="Resultado — hélix y nostril" loading="lazy"></figure>
+      <figure><img src="assets/img/resultados/r7.jpg" alt="Resultado — tragus con estrella y lóbulo" loading="lazy"></figure>
     </div>
     <div class="res-more">
       <a class="btn btn-ghost" href="https://www.instagram.com/martinbodypiercing/" target="_blank" rel="noopener">
@@ -1026,7 +1031,7 @@
   }
   function scrollFactor(){
     var h=window.innerHeight||800; var y=window.scrollY||window.pageYOffset||0;
-    var f=1-Math.min(1,y/(h*1.3)); return 0.16+0.84*f;
+    var f=1-(y/(h*0.55)); return f<0?0:(f>1?1:f);
   }
   function setVol(){
     if(!master||!ctx) return;

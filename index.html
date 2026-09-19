@@ -238,7 +238,9 @@
   .step p{margin:0; color:var(--ink-soft); font-size:.96rem}
 
   /* ---------- bioseguridad ---------- */
-  .bio-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(24px,4vw,48px); align-items:center}
+  .bio-grid{display:grid; grid-template-columns:minmax(240px,300px) 1fr; gap:clamp(24px,4vw,48px); align-items:center}
+  .bio-video{border-radius:20px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--card-shadow); background:#0c0c0e}
+  .bio-video video{width:100%; display:block; aspect-ratio:9/16; object-fit:cover; background:#0c0c0e; max-height:72vh}
   .video-frame{
     position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--line);
     box-shadow:var(--card-shadow); background:#0c0c0e; aspect-ratio:16/9;
@@ -373,7 +375,6 @@
       </svg>
       <span style="display:flex;flex-direction:column;line-height:1.05">
         <b>Martin Body Piercing</b>
-        <span>Professional Piercer</span>
       </span>
     </a>
 
@@ -413,7 +414,6 @@
       <path class="line" d="M15 43 A 17 17 0 0 0 15 73" stroke-width="3.4" stroke-linecap="round"/>
       <path class="line" d="M45 43 A 17 17 0 0 1 45 73" stroke-width="3.4" stroke-linecap="round"/>
     </svg>
-    <span class="eyebrow">Professional Piercer · Desde 2018</span>
     <div class="kana" aria-hidden="true">ボディピアス</div>
     <h1 class="display">Martin Body Piercing</h1>
     <p class="tagline">Tu cuerpo, tu estilo, nuestra pasión.</p>
@@ -580,15 +580,10 @@
       <p>Cada procedimiento se realiza garantizando un trabajo de excelencia sin arriesgar tu salud: equipos profesionales, esterilización certificada y protocolos de bioseguridad en cada paso.</p>
     </div>
     <div class="bio-grid">
-      <div class="video-frame">
-        <video id="vidEster" controls preload="none" playsinline poster="">
-          <!-- El video de esterilización se agrega aquí cuando esté disponible -->
+      <div class="bio-video">
+        <video controls preload="none" playsinline poster="assets/img/poster-esterilizacion.jpg">
+          <source src="assets/videos/esterilizacion.mp4" type="video/mp4">
         </video>
-        <div class="video-ph" id="esterPH">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-          <b>Video de esterilización</b>
-          <small>Próximamente: el proceso de esterilización y uso profesional de los equipos.</small>
-        </div>
       </div>
       <div>
         <div class="badges">
@@ -606,7 +601,7 @@
           </div>
           <div class="badge">
             <span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l2.4 5 5.6.5-4.3 3.7 1.4 5.5L12 19l-5.1 2.7 1.4-5.5L4 12.5l5.6-.5L12 2z"/></svg></span>
-            <div><b>Experiencia y confianza</b><span>Profesional desde 2018, cientos de perforaciones.</span></div>
+            <div><b>Experiencia y confianza</b><span>Cientos de perforaciones con acabado impecable.</span></div>
           </div>
         </div>
       </div>
@@ -691,13 +686,13 @@
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>
             <span><span class="t">Instagram</span><span class="s">@martinbodypiercing</span></span>
           </a>
-          <a class="row" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera%2064a%20%2311a-30" target="_blank" rel="noopener">
+          <a class="row" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera%2064a%20%2311a-30%2C%20Cali%2C%20Colombia" target="_blank" rel="noopener">
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-            <span><span class="t">Dirección</span><span class="s">Carrera 64A #11A-30</span></span>
+            <span><span class="t">Dirección</span><span class="s">Carrera 64A #11A-30, Cali</span></span>
           </a>
         </div>
 
-        <a class="mapcard" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera%2064a%20%2311a-30" target="_blank" rel="noopener" aria-label="Abrir la ubicación en Google Maps">
+        <a class="mapcard" href="https://www.google.com/maps/search/?api=1&amp;query=Carrera%2064a%20%2311a-30%2C%20Cali%2C%20Colombia" target="_blank" rel="noopener" aria-label="Abrir la ubicación en Google Maps">
           <svg class="map" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="400" height="240" fill="#e6e3db"/>
             <rect x="24" y="20" width="120" height="70" fill="#efece5"/>
@@ -719,7 +714,7 @@
           </svg>
           <span class="pin"><svg viewBox="0 0 24 24" fill="#c8352b" stroke="#fff" stroke-width="1.4" aria-hidden="true"><path d="M12 22s7-6.3 7-11a7 7 0 0 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="11" r="2.6" fill="#fff" stroke="none"/></svg></span>
           <span class="maplabel">
-            <span><b>Carrera 64A #11A-30</b><span class="sub">Toca para abrir en Google Maps</span></span>
+            <span><b>Carrera 64A #11A-30</b><span class="sub">Cali · Toca para abrir en Google Maps</span></span>
             <span class="go">Cómo llegar</span>
           </span>
         </a>
@@ -752,7 +747,7 @@
       <div class="fslogan">Tu cuerpo, tu estilo, nuestra pasión.</div>
     </div>
     <a href="https://www.instagram.com/martinbodypiercing/" target="_blank" rel="noopener">Instagram · @martinbodypiercing</a>
-    <div class="fcopy">Professional Piercer · Desde 2018</div>
+    <div class="fcopy">Cali, Colombia</div>
   </div>
 </footer>
 
@@ -806,8 +801,8 @@
 
   /* palette per mode */
   var PAL = {
-    bw: { point:0x4a4d55, sprite:0x111118, spriteOp:0.10, p1:0.55, p2:0.80 },
-    jp: { point:0xf0d79a, sprite:0xecdcbd, spriteOp:0.16, p1:0.75, p2:0.95 }
+    bw: { point:0x4a4d55, sprite:0x15151c, spriteOp:0.16, p1:0.55, p2:0.80 },
+    jp: { point:0xf0d79a, sprite:0xecdcbd, spriteOp:0.22, p1:0.75, p2:0.95 }
   };
   var mode = document.documentElement.getAttribute("data-mode")==="jp" ? "jp":"bw";
 
@@ -858,31 +853,63 @@
     img.onerror=function(){};
     img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg);
   }
-  function addSprites(tex, isKatana, count){
+  function addSprites(tex, isKatana, tint, count, opBw, opJp){
+    var iw=(tex.image&&tex.image.width)||300, ih=(tex.image&&tex.image.height)||300;
+    var ar=ih/iw;
     for(var i=0;i<count;i++){
-      var mat=new THREE.SpriteMaterial({map:tex, transparent:true, opacity:PAL[mode].spriteOp, depthWrite:false});
-      mat.color.setHex(PAL[mode].sprite);
+      var mat=new THREE.SpriteMaterial({map:tex, transparent:true, depthWrite:false});
+      mat.opacity=(mode==="jp"?opJp:opBw);
+      mat.color.setHex(tint?PAL[mode].sprite:0xffffff);
       var s=new THREE.Sprite(mat);
-      var base=isKatana?(20+Math.random()*16):(13+Math.random()*11);
-      if(isKatana){ s.scale.set(base*2.0, base*2.0*(70/340), 1); }
-      else { s.scale.set(base*0.95, base, 1); }
-      s.position.set((Math.random()-.5)*FIELD*2, (Math.random()-.5)*YHALF*2, -20+Math.random()*24);
-      sprites.push({ s:s, dir:(Math.random()<.5?-1:1), speed:1.6+Math.random()*3.2,
-        baseY:s.position.y, bob:.3+Math.random()*.6, phase:Math.random()*6.28,
-        tilt:isKatana?(-.25+Math.random()*.5):(-.12+Math.random()*.24) });
-      s.material.rotation = sprites[sprites.length-1].tilt;
-      scene.add(s);
+      var base=isKatana?(20+Math.random()*14):(15+Math.random()*10);
+      s.scale.set(base, base*ar, 1);
+      s.position.set((Math.random()-.5)*FIELD*2,(Math.random()-.5)*YHALF*2,-22+Math.random()*26);
+      var o={ s:s, dir:(Math.random()<.5?-1:1), speed:1.6+Math.random()*3.4, baseY:s.position.y, bob:.3+Math.random()*.6, phase:Math.random()*6.28, tilt:isKatana?(-.3+Math.random()*.6):(-.12+Math.random()*.24), tint:tint, opBw:opBw, opJp:opJp };
+      s.material.rotation=o.tilt; sprites.push(o); scene.add(s);
     }
   }
-  texFromSVG(hannyaSVG, false===false?function(t){ addSprites(t,false, mobile?3:5); }:null);
-  texFromSVG(katanaSVG, function(t){ addSprites(t,true, mobile?3:5); });
+  function _rr(g,x,y,w,h,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); }
+  function _kat(){
+    var c=document.createElement("canvas"); c.width=340; c.height=70; var g=c.getContext("2d");
+    g.fillStyle="#fff";
+    g.beginPath(); g.moveTo(116,35); g.quadraticCurveTo(220,22,332,33); g.quadraticCurveTo(220,45,116,40); g.closePath(); g.fill();
+    _rr(g,102,18,10,34,4); g.fill();
+    _rr(g,56,28,46,14,5); g.fill();
+    _rr(g,46,26,10,18,4); g.fill();
+    var t=new THREE.CanvasTexture(c); t.minFilter=THREE.LinearFilter; return t;
+  }
+  function _eye(g,x,y,rot){ g.save(); g.translate(x,y); g.rotate(rot); g.beginPath(); g.moveTo(-18,0); g.quadraticCurveTo(0,-11,18,0); g.quadraticCurveTo(0,9,-18,0); g.closePath(); g.fill(); g.restore(); }
+  function _han(){
+    var c=document.createElement("canvas"); c.width=220; c.height=232; var g=c.getContext("2d");
+    g.fillStyle="#fff";
+    g.beginPath(); g.moveTo(72,54); g.quadraticCurveTo(30,10,6,16); g.quadraticCurveTo(42,28,60,72); g.closePath(); g.fill();
+    g.beginPath(); g.moveTo(148,54); g.quadraticCurveTo(190,10,214,16); g.quadraticCurveTo(178,28,160,72); g.closePath(); g.fill();
+    g.beginPath(); g.ellipse(110,132,80,94,0,0,Math.PI*2); g.fill();
+    g.globalCompositeOperation="destination-out";
+    _eye(g,80,122,-0.5); _eye(g,140,122,0.5);
+    g.lineWidth=9; g.lineCap="round"; g.strokeStyle="#000";
+    g.beginPath(); g.moveTo(52,100); g.lineTo(96,114); g.stroke();
+    g.beginPath(); g.moveTo(168,100); g.lineTo(124,114); g.stroke();
+    g.beginPath(); g.moveTo(62,170); g.quadraticCurveTo(110,158,158,170); g.lineTo(150,184); g.lineTo(142,171); g.lineTo(134,186); g.lineTo(126,171); g.lineTo(110,188); g.lineTo(94,171); g.lineTo(86,186); g.lineTo(78,171); g.lineTo(70,184); g.closePath(); g.fill();
+    g.beginPath(); g.arc(100,152,4.5,0,7); g.fill();
+    g.beginPath(); g.arc(120,152,4.5,0,7); g.fill();
+    g.globalCompositeOperation="source-over";
+    var t=new THREE.CanvasTexture(c); t.minFilter=THREE.LinearFilter; return t;
+  }
+  var _tl=new THREE.TextureLoader();
+  _tl.load("assets/img/hannya.png", function(t){ t.minFilter=THREE.LinearFilter; addSprites(t,false,false, mobile?2:4, 0.26, 0.34); });
+  _tl.load("assets/img/katana.png", function(t){ t.minFilter=THREE.LinearFilter; addSprites(t,true,false, mobile?2:3, 0.24, 0.32); });
+  _tl.load("assets/img/katana3.png", function(t){ t.minFilter=THREE.LinearFilter; addSprites(t,true,false, mobile?1:2, 0.24, 0.32); });
 
   /* ---- mode switch ---- */
   function setMode(m){
     mode=m; var pal=PAL[m];
     p1.material.color.setHex(pal.point);
     p2.material.color.setHex(pal.point);
-    for(var i=0;i<sprites.length;i++){ sprites[i].s.material.color.setHex(pal.sprite); }
+    for(var i=0;i<sprites.length;i++){ var o=sprites[i];
+      if(o.tint) o.s.material.color.setHex(pal.sprite);
+      o.s.material.opacity=(m==="jp"?o.opJp:o.opBw);
+    }
   }
   window.__mbpScene = { setMode:setMode };
 
@@ -949,8 +976,8 @@
     var AC=window.AudioContext||window.webkitAudioContext;
     ctx=new AC();
     master=ctx.createGain(); master.gain.value=0; master.connect(ctx.destination);
-    delay=ctx.createDelay(1.0); delay.delayTime.value=0.34;
-    fb=ctx.createGain(); fb.gain.value=0.30;
+    delay=ctx.createDelay(1.0); delay.delayTime.value=0.26;
+    fb=ctx.createGain(); fb.gain.value=0.28;
     wet=ctx.createGain(); wet.gain.value=0.45;
     delay.connect(fb); fb.connect(delay); delay.connect(wet); wet.connect(master);
     padGain=ctx.createGain(); padGain.gain.value=0; padGain.connect(master);
@@ -961,7 +988,7 @@
     var g=ctx.createGain(); g.gain.value=0;
     var lp=ctx.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=2600; lp.Q.value=0.5;
     o.connect(lp); o2.connect(lp); lp.connect(g); g.connect(master); g.connect(delay);
-    var d=1.5+Math.random()*0.9;
+    var d=0.85+Math.random()*0.55;
     g.gain.setValueAtTime(0,t);
     g.gain.linearRampToValueAtTime(vel,t+0.006);
     g.gain.exponentialRampToValueAtTime(0.0008,t+d);
@@ -978,14 +1005,22 @@
       o.start(t); o.stop(t+7.3);
     });
   }
+  function bass(freq,t){
+    var o=ctx.createOscillator(); o.type="sine"; o.frequency.value=freq;
+    var g=ctx.createGain(); g.gain.value=0; o.connect(g); g.connect(master);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(0.10,t+0.02); g.gain.exponentialRampToValueAtTime(0.0008,t+0.5);
+    o.start(t); o.stop(t+0.6);
+  }
   function schedule(){
-    var t=ctx.currentTime+0.06;
-    var pattern=[0,2,4,3,2,4,6,4,7,4,2,3];
-    var note=pattern[beat%pattern.length]+(Math.floor(beat/pattern.length)%2?2:0);
-    if(Math.random()>0.16){
-      pluck(hz(note),t,0.42+Math.random()*0.22);
-      if(Math.random()>0.62) pluck(hz(note+2),t+0.1,0.22);
+    var t=ctx.currentTime+0.05;
+    var pattern=[0,2,4,7,4,2,3,5,7,9,7,4,2,4,6,4];
+    var note=pattern[beat%pattern.length];
+    if(Math.random()>0.05){
+      pluck(hz(note),t,0.40+Math.random()*0.22);
+      if(Math.random()>0.5) pluck(hz(note+2),t+0.055,0.20);
     }
+    if(beat%2===1 && Math.random()>0.4) pluck(hz(note+(Math.random()<.5?4:-3)),t+0.14,0.16);
+    if(beat%2===0) bass(hz(note%5)/2,t);
     if(beat%8===0) padChord(t);
     beat++; step++;
   }
@@ -1004,7 +1039,7 @@
     try{ if(!ctx) build(); }catch(e){ return; }
     if(ctx.state==="suspended") ctx.resume();
     enabled=true; btn.setAttribute("aria-pressed","true"); btn.classList.add("playing");
-    if(!timer){ timer=setInterval(schedule,520); schedule(); }
+    if(!timer){ timer=setInterval(schedule,300); schedule(); }
     setVol();
   }
   function disable(){

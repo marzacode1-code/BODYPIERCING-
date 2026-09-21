@@ -45,7 +45,8 @@
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  [hidden]{display:none !important}
+  html{scroll-behavior:smooth; overflow-x:clip}
   body{
     margin:0;
     background:var(--page-bg);
@@ -57,9 +58,10 @@
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
     transition:color .5s ease;
-    overflow-x:hidden;
+    overflow-x:clip;
+    max-width:100%;
   }
-  #bg{position:fixed; inset:0; width:100vw; height:100vh; z-index:-1; pointer-events:none; display:block;}
+  #bg{position:fixed; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; display:block;}
 
   .wrap{width:100%; max-width:1120px; margin-inline:auto; padding-inline:20px;}
   section{position:relative; z-index:1; padding-block:clamp(58px,9vw,112px); scroll-margin-top:78px;}
@@ -111,6 +113,13 @@
   }
   .ig-btn:hover{background:var(--accent-soft)}
   .ig-btn svg{width:15px;height:15px}
+
+  .menu-btn{display:none; width:38px; height:38px; place-items:center; border:1px solid var(--line-2); border-radius:999px; background:transparent; color:var(--ink); cursor:pointer; padding:0}
+  .menu-btn:hover{background:var(--accent-soft)}
+  .menu-btn svg{width:19px; height:19px}
+  .mobile-menu{position:fixed; left:0; right:0; top:calc(env(safe-area-inset-top,0px) + 61px); z-index:40; background:var(--bg); border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; flex-direction:column; padding:6px 20px 14px; box-shadow:0 24px 44px -26px rgba(0,0,0,.55)}
+  .mobile-menu a{padding:14px 4px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line); font-family:"Shippori Mincho",serif; font-size:1.08rem}
+  .mobile-menu a:last-child{border-bottom:0}
 
   /* theme toggle */
   .toggle{
@@ -342,6 +351,7 @@
   /* ---------- responsive ---------- */
   @media (max-width:860px){
     .nav{display:none}
+    .menu-btn{display:inline-grid}
     .price-grid, .proceso-grid, .bio-grid, .pqrs-grid, .joya-grid, .contact-grid{grid-template-columns:1fr}
     .proceso-photo img{aspect-ratio:4/3}
     .badges{grid-template-columns:1fr 1fr}
@@ -351,9 +361,16 @@
   @media (max-width:520px){
     .res-grid{columns:1}
   }
+  @media (max-width:600px){
+    .site-header .wrap{gap:10px}
+    .brand .bwrap{display:none !important}
+    .header-actions{margin-left:auto; gap:8px}
+    .header-actions .ig-btn span{display:none}
+    .ig-btn{padding:9px}
+    .music-btn{width:36px; height:36px}
+  }
   @media (max-width:460px){
     .badges{grid-template-columns:1fr}
-    .header-actions .ig-btn span{display:none}
     .btn{padding:13px 20px}
   }
   @media (prefers-reduced-motion:reduce){
@@ -374,7 +391,7 @@
         <path class="line" d="M15 43 A 17 17 0 0 0 15 73" stroke-width="3.4" stroke-linecap="round"/>
         <path class="line" d="M45 43 A 17 17 0 0 1 45 73" stroke-width="3.4" stroke-linecap="round"/>
       </svg>
-      <span style="display:flex;flex-direction:column;line-height:1.05">
+      <span class="bwrap" style="display:flex;flex-direction:column;line-height:1.05">
         <b>Martin Body Piercing</b>
       </span>
     </a>
@@ -390,6 +407,9 @@
     </nav>
 
     <div class="header-actions">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
       <button class="music-btn" id="musicBtn" type="button" aria-pressed="false" aria-label="Activar o silenciar música" title="Música japonesa — activar / silenciar">
         <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
         <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.8 6a8 8 0 0 1 0 12"/></svg>
@@ -405,6 +425,17 @@
     </div>
   </div>
 </header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú de secciones" hidden>
+  <a href="#precios">Precios</a>
+  <a href="#tipos">Tipos de perforación</a>
+  <a href="#joyeria">Joyería</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#bioseguridad">Bioseguridad</a>
+  <a href="#resultados">Resultados</a>
+  <a href="#pqrs">PQRS</a>
+  <a href="#contacto">Contacto</a>
+</nav>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="top">
@@ -1054,5 +1085,18 @@
   }
   btn.addEventListener("click",function(){ enabled?disable():enable(); });
   window.addEventListener("scroll",function(){ if(enabled) setVol(); },{passive:true});
+})();
+</script>
+
+<script>
+/* ============ MENÚ HAMBURGUESA (móvil) ============ */
+(function(){
+  var mb=document.getElementById("menuBtn"), mm=document.getElementById("mobileMenu");
+  if(!mb||!mm) return;
+  function setOpen(open){ mm.hidden=!open; mb.setAttribute("aria-expanded", open?"true":"false"); }
+  mb.addEventListener("click", function(){ setOpen(mm.hidden); });
+  [].slice.call(mm.querySelectorAll("a")).forEach(function(a){ a.addEventListener("click", function(){ setOpen(false); }); });
+  document.addEventListener("click", function(e){ if(!mm.hidden && !mm.contains(e.target) && !mb.contains(e.target)) setOpen(false); });
+  window.addEventListener("resize", function(){ if(window.innerWidth>860) setOpen(false); });
 })();
 </script>

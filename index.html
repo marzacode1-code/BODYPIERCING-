@@ -307,7 +307,7 @@
   a:focus-visible, button:focus-visible, video:focus-visible{outline:2px solid var(--focus); outline-offset:3px; border-radius:6px}
 
   /* ---------- joyería ---------- */
-  .joya-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+  .joya-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:20px}
   .joya-card{background:var(--surface); border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:var(--card-shadow); display:flex; flex-direction:column; transition:transform .3s ease, background .5s ease, border-color .5s ease}
   .joya-card:hover{transform:translateY(-4px)}
   .joya-card .ph{aspect-ratio:4/3; background:var(--surface-2); overflow:hidden}
@@ -352,7 +352,7 @@
   @media (max-width:860px){
     .nav{display:none}
     .menu-btn{display:inline-grid}
-    .price-grid, .proceso-grid, .bio-grid, .pqrs-grid, .joya-grid, .contact-grid{grid-template-columns:1fr}
+    .price-grid, .proceso-grid, .bio-grid, .pqrs-grid, .contact-grid{grid-template-columns:1fr}
     .proceso-photo img{aspect-ratio:4/3}
     .badges{grid-template-columns:1fr 1fr}
     .q-card video{aspect-ratio:16/10; max-height:none}
@@ -534,23 +534,39 @@
         <div class="jb">
           <div class="mat">Grado implante</div>
           <h3 class="display">Titanio</h3>
-          <p>Hipoalergénico y seguro para perforaciones nuevas. La mejor opción para una cicatrización sana.</p>
+          <p>Hipoalergénico y seguro, ideal para perforaciones nuevas y una cicatrización sana.</p>
         </div>
       </article>
       <article class="joya-card">
-        <div class="ph"><img src="assets/img/joyeria/plata.jpg" alt="Joyería en plata y acero" loading="lazy"></div>
+        <div class="ph"><img src="assets/img/joyeria/plata.jpg" alt="Joyería en plata" loading="lazy"></div>
         <div class="jb">
-          <div class="mat">Acero quirúrgico · Plata</div>
-          <h3 class="display">Plata &amp; Acero</h3>
-          <p>Brillo clásico y versátil para el día a día, con acabados pulidos y diseños minimalistas.</p>
+          <div class="mat">Clásica</div>
+          <h3 class="display">Plata</h3>
+          <p>Brillo clásico y versátil para el día a día, con acabados pulidos.</p>
         </div>
       </article>
       <article class="joya-card">
-        <div class="ph"><img src="assets/img/joyeria/oro.jpg" alt="Joyería de lujo en oro y diamantes" loading="lazy"></div>
+        <div class="ph"><img src="assets/img/joyeria/acero.jpg" alt="Joyería en acero quirúrgico" loading="lazy"></div>
+        <div class="jb">
+          <div class="mat">Quirúrgico</div>
+          <h3 class="display">Acero</h3>
+          <p>Acero quirúrgico resistente y seguro, con diseños llamativos.</p>
+        </div>
+      </article>
+      <article class="joya-card">
+        <div class="ph"><img src="assets/img/joyeria/oro.jpg" alt="Joyería en oro" loading="lazy"></div>
         <div class="jb">
           <div class="mat">Premium</div>
-          <h3 class="display">Oro · Diamantes · Platino</h3>
-          <p>Joyería de alta gama para elevar tu estilo con un acabado premium. La elección de la joya depende de ti.</p>
+          <h3 class="display">Oro</h3>
+          <p>Oro de alta calidad con un acabado premium que eleva tu estilo.</p>
+        </div>
+      </article>
+      <article class="joya-card">
+        <div class="ph"><img src="assets/img/joyeria/diamantes.jpg" alt="Joyería con diamantes" loading="lazy"></div>
+        <div class="jb">
+          <div class="mat">Alta gama</div>
+          <h3 class="display">Diamantes</h3>
+          <p>Diamantes y piedras de lujo. La elección de la joya depende de ti.</p>
         </div>
       </article>
     </div>
@@ -1000,7 +1016,7 @@
 (function(){
   var btn=document.getElementById("musicBtn");
   if(!btn) return;
-  var ctx=null, master=null, delay=null, fb=null, wet=null, padGain=null;
+  var ctx=null, master=null, delay=null, fb=null, wet=null, padGain=null, unlockEl=null;
   var enabled=false, timer=null, beat=0, step=0;
   var base=0.17;
   var root=220; // A3
@@ -1073,6 +1089,11 @@
   }
   function enable(){
     try{ if(!ctx) build(); }catch(e){ return; }
+    // iOS: reproducir un audio en silencio dentro del gesto desbloquea el canal de medios
+    try{
+      if(!unlockEl){ unlockEl=new Audio("data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA/+M4wAAAAAAAAAAAAEluZm8AAAAPAAAACAAAAxgAXV1dXV1dXV1dXV1ddHR0dHR0dHR0dHR0i4uLi4uLi4uLi4uLi6KioqKioqKioqKiorq6urq6urq6urq6urrR0dHR0dHR0dHR0dHo6Ojo6Ojo6Ojo6Ojo////////////////AAAAAExhdmM2MC4zMQAAAAAAAAAAAAAAACQDQAAAAAAAAAMYlSZpNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+MYxAAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVV/+MYxDsAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVV/+MYxHYAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVV/+MYxLEAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVV/+MYxMQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV/+MYxMQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV/+MYxMQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV/+MYxMQAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"); unlockEl.loop=true; unlockEl.volume=0.02; }
+      unlockEl.play().catch(function(){});
+    }catch(e){}
     if(ctx.state==="suspended") ctx.resume();
     enabled=true; btn.setAttribute("aria-pressed","true"); btn.classList.add("playing");
     if(!timer){ timer=setInterval(schedule,300); schedule(); }
@@ -1081,7 +1102,7 @@
   function disable(){
     enabled=false; btn.setAttribute("aria-pressed","false"); btn.classList.remove("playing");
     setVol();
-    setTimeout(function(){ if(!enabled&&ctx&&ctx.state==="running") ctx.suspend(); },800);
+    setTimeout(function(){ if(!enabled){ try{ if(unlockEl) unlockEl.pause(); }catch(e){} if(ctx&&ctx.state==="running") ctx.suspend(); } },800);
   }
   btn.addEventListener("click",function(){ enabled?disable():enable(); });
   window.addEventListener("scroll",function(){ if(enabled) setVol(); },{passive:true});
